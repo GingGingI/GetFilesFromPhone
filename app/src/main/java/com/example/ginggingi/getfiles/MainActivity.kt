@@ -13,6 +13,7 @@ import com.example.ginggingi.getfiles.Utils.PermissionChker
 import com.example.ginggingi.getfiles.models.MediaModels
 
 import com.example.ginggingi.getfiles.models.PermissionModels
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                             override fun SuccessCallback(uris: ArrayList<String>) {
                                 FList = uris
                                 Log.i("getFiles", "Success")
+                                setTextView()
                             }
                             override fun FailedCallback() {
                                 Log.i("getFiles","Cannot found Data")
@@ -80,6 +82,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun setTextView(){
+        var Str = ""
+        for (i in FList){
+            Str += i+"\n"
+        }
+        Txv.setText(Str)
+    }
     @Override
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
                                             grantResults: IntArray) {
